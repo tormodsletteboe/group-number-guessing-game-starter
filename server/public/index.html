@@ -12,5 +12,25 @@
 </head>
 <body>
     <h1>YOUR GAME HERE!</h1>
+
+    <form id="inputForm">
+      <input id = "inputPlayer1" placeholder="Guess for Player 1" type="number" min="1" max="25">
+      <input id = "inputPlayer2" placeholder="Guess for Player 2" type="number" min="1" max="25">
+      <button id="submitBtn" type="submit">Play</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Round</th>
+          <th>Player 1</th>
+          <th>Result</th>
+          <th>Player 2</th>
+          <th>Result</th>
+      </tr>
+      </thead>
+      <tbody id="tableResult">
+
+      </tbody>
+    </table>
 </body>
 </html>
