@@ -14,8 +14,8 @@
     <h1>YOUR GAME HERE!</h1>
 
     <form id="inputForm">
-      <input id = "inputPlayer1" value='12' placeholder="Guess for Player 1" type="number" min="1" max="25">
-      <input id = "inputPlayer2" value='12' placeholder="Guess for Player 2" type="number" min="1" max="25">
+      <input required id = "inputPlayer1" placeholder="Guess for Player 1" type="number" min="1" max="25">
+      <input required id = "inputPlayer2" placeholder="Guess for Player 2" type="number" min="1" max="25">
       <button id="submitBtn" type="submit">Play</button>
     </form>
     <table>
@@ -34,3 +34,11 @@
     </table>
 </body>
 </html>
+
+<!-- 
+thisRound:round++,
+    randomNumber: rando,
+    p1: p1Choice,
+    p2: p2Choice,
+    resultP1: p1Result,
+    resultP2: p2Result -->

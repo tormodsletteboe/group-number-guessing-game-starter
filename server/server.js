@@ -20,7 +20,10 @@ app.get('/getRandomNum',(req,res)=>{
   res.send({stateRandomNumber});
 });
 
-
+app.get('/getHistory', (req, res)=> {
+  console.log('in /getHistory GET');
+  res.send(stateHistory);
+});
 
 app.post('/getHistory', (req, res)=>{
   console.log('in /getHistory POST');

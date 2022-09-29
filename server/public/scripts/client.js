@@ -2,7 +2,10 @@
 $(document).ready(handleReady);
 let rando=0;
 
+let history=[];
+
 let round=1;
+
 function handleReady() {
   console.log("jquery is loaded!")
 
@@ -57,15 +60,14 @@ function onSubmitGuess(evt){
       // console.log('this is response', response);
       if(response==201){
         getRandomNumbFromServer();
+        updateHistory();
       };
       
     })
     .catch((err)=>{
       console.log('/getHistory err', err);
     });
-
-
-
+    render();
 }
 
 function whoWins(player){
@@ -78,16 +80,47 @@ function whoWins(player){
     return 'WIN! 🔥'
   }
   else if(player>rando){
-    return 'Too High 😦'
+    return 'Too High ⏫'
   }
   else{
     return 'Too Low 😦'
   }
 }
 
+function updateHistory(){
+  console.log('in updateHistory');
+
+  $.ajax({
+    url: '/getHistory',
+    method: 'GET'
+  })
+    .then((response)=>{
+      history=response;
+      // console.log('history is', history);
+    })
+    .catch((err)=>{
+      console.log('in /getHistory GET error', err);
+    });
+}
 
 
 function render(){
+  console.log('in Render');
+    //PULL State
+  $('#tableResult').empty();
 
+  for( let round of history){
+    console.log('in for loop');
+    console.log('the round', round); 
+    $('#tableResult').append(`
+      <tr>
+        <td>${round.thisRound}</td>
+        <td>${round.p1}</td>
+        <td>${round.resultP1} </td>
+        <td>${round.p2} </td>
+        <td>${round.resultP2} </td>
+      </tr>
+    `);
+  }
 
 }
