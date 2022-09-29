@@ -10,19 +10,23 @@ function handleReady() {
   console.log("jquery is loaded!")
 
   //register on submit
-  getRandomNumbFromServer();
+  SetRandomNumberOnServer();
   $('#inputForm').on('submit', onSubmitGuess);
+  $('#newRandomBtn').on('click',onNewRandBtn);
 }
 
-function getRandomNumbFromServer(){
+function onNewRandBtn(){
+  SetRandomNumberOnServer();
+  clearTable();
+}
+
+function SetRandomNumberOnServer(){
   $.ajax({
     url: '/getRandomNum',
     method: 'GET'
   })
   .then((response)=>{
     console.log('in ajax /getRandomNum then');
-    rando = response.stateRandomNumber;
-    console.log('rando is',rando);
   })
   .catch((err)=>{
     console.log('/getRandomNum err',err);
@@ -55,7 +59,6 @@ function onSubmitGuess(evt){
       // console.log('/getHistory POST');
       // console.log('this is response', response);
       if(response==201){
-        getRandomNumbFromServer();
         updateHistory();
       };
       
@@ -90,13 +93,15 @@ function updateHistory(){
     });
     
 }
+function clearTable(){
+  $('#tableResult').empty();
 
+}
 
 function render(){
   console.log('in Render');
     //PULL State
-  $('#tableResult').empty();
-
+  clearTable();
   for( let round1 of history){
     console.log('in for loop');
     console.log('the round', round1); 

@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
 const PORT = 3000;
-
+const numGenerator=require('./randomNumber');
 let stateRandomNumber ;
 let stateHistory =[]
 // This must be added before GET & POST routes.
@@ -15,8 +15,9 @@ app.use(express.static('server/public'));
 app.get('/getRandomNum',(req,res)=>{
   // console.log('in getRandomNum');
   // stateRandomNumber=getRandomNumber();
-  stateRandomNumber = (Math.ceil(Math.random()*25));
+  stateRandomNumber = numGenerator();
   // console.log('RandomNumber is',stateRandomNumber);
+  stateHistory=[];
   res.send({stateRandomNumber});
 });
 
