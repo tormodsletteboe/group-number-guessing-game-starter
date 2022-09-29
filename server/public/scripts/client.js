@@ -67,7 +67,12 @@ function onSubmitGuess(evt){
   //object creation to send to server
   let p1Choice=$('#inputPlayer1').val();
   let p2Choice=$('#inputPlayer2').val();
- 
+  
+  if(p1Choice===p2Choice){
+    alert('Must choose different numbers silly pants 🙁');
+    return;
+  }
+
   let guesses={
     thisRound:round++,
     p1: p1Choice,
