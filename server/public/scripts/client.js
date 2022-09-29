@@ -141,6 +141,8 @@ function render(){
         <td>${round1.p1Result} </td>
         <td>${round1.p2} </td>
         <td>${round1.p2Result} </td>
+        <td>${round1.pBot}</td>
+        <td>${round1.pBotResult}
       </tr>
     `);
   }

@@ -38,14 +38,17 @@ app.get('/getHistory', (req, res)=> {
 
 app.post('/getHistory', (req, res)=>{
   console.log('in /getHistory POST');
+  // let botGuess=numGenerator(Number(min), Number(max));
   let newHistoryItem ={
     p1: req.body.p1,
     p1Result: whoWins(req.body.p1), //calculate something
     p2: req.body.p2,
     p2Result: whoWins(req.body.p2), //calculate something
     roundCounter: req.body.thisRound,
-    randum: stateRandomNumber
-  }
+    randum: stateRandomNumber,
+    pBot: 'botguess', //calc //TODO : continue from here on friday
+    pBotResult: whoWins(11) //calc
+  };
   stateHistory.push(newHistoryItem);
   // stateRandomNumber=getRandomNumber();
   console.log(stateHistory);
