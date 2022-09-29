@@ -39,15 +39,11 @@ function onSubmitGuess(evt){
   //object creation to send to server
   let p1Choice=$('#inputPlayer1').val();
   let p2Choice=$('#inputPlayer2').val();
-  let p1Result=whoWins($('#inputPlayer1').val());
-  let p2Result=whoWins($('#inputPlayer2').val());
+ 
   let guesses={
     thisRound:round++,
-    randomNumber: rando,
     p1: p1Choice,
     p2: p2Choice,
-    resultP1: p1Result,
-    resultP2: p2Result
     };
   
   $.ajax({
@@ -70,22 +66,7 @@ function onSubmitGuess(evt){
     
 }
 
-function whoWins(player){
-  console.log('in whoWins');
 
-  //check if p1 or p2 wins or if they are too low or high
-  // console.log('player is', player);
-  // console.log('rando is', rando);
-  if(player==rando){
-    return 'WIN! 🔥'
-  }
-  else if(player>rando){
-    return 'Too High ⏫'
-  }
-  else{
-    return 'Too Low 😦'
-  }
-}
 
 function updateHistory(){
   console.log('in updateHistory');
@@ -121,11 +102,11 @@ function render(){
     console.log('the round', round1); 
     $('#tableResult').append(`
       <tr>
-        <td>${round1.thisRound}</td>
+        <td>${round1.roundCounter}</td>
         <td>${round1.p1}</td>
-        <td>${round1.resultP1} </td>
+        <td>${round1.p1Result} </td>
         <td>${round1.p2} </td>
-        <td>${round1.resultP2} </td>
+        <td>${round1.p2Result} </td>
       </tr>
     `);
   }
