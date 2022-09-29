@@ -12,12 +12,36 @@ function handleReady() {
   //register on submit
   SetRandomNumberOnServer();
   $('#inputForm').on('submit', onSubmitGuess);
-  $('#newRandomBtn').on('click',onNewRandBtn);
+  $('#numberMinMax').on('submit',onNewRandBtn);
 }
 
-function onNewRandBtn(){
+function onNewRandBtn(evt){
+  evt.preventDefault();
   SetRandomNumberOnServer();
   clearTable();
+  setServerMinMax();
+}
+
+function setServerMinMax(){
+  let newBoundary={
+    min: $('#inputMin').val(),
+    max: $('#inputMax').val()
+  }
+
+  $('.guessRange').attr('min', newBoundary.min);
+  $('.guessRange').attr('max', newBoundary.max);
+
+  $.ajax({
+    url: '/minMax',
+    method: 'POST',
+    data: newBoundary
+  })
+    .then((response)=> {
+      console.log('in /minMax POST');
+    })
+    .catch((err)=>{
+      console.log('in /minMax Error', err);
+    });
 }
 
 function SetRandomNumberOnServer(){

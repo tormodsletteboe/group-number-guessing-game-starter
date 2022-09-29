@@ -11,11 +11,21 @@ app.use(bodyParser.urlencoded({extended:true}))
 // Serve up static files (HTML, CSS, Client JS)
 app.use(express.static('server/public'));
 
+let min=1;
+let max=25;
+
 // GET & POST Routes go here
+app.post('/minMax', (req, res) => {
+  min = req.body.min;
+  max = req.body.max;
+  res.send('201');
+  ///MAKE SURE TO UPDATE STATUS CODE!!!
+} );
+
 app.get('/getRandomNum',(req,res)=>{
   // console.log('in getRandomNum');
   // stateRandomNumber=getRandomNumber();
-  stateRandomNumber = numGenerator();
+  stateRandomNumber = numGenerator(Number(min), Number(max));
   // console.log('RandomNumber is',stateRandomNumber);
   stateHistory=[];
   res.send({stateRandomNumber});
