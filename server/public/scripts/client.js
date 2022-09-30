@@ -17,9 +17,10 @@ function handleReady() {
 
 function onNewRandBtn(evt){
   evt.preventDefault();
+  setServerMinMax();
   SetRandomNumberOnServer();
   clearTable();
-  setServerMinMax();
+
 }
 
 function setServerMinMax(){
