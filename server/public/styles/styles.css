@@ -1,0 +1,15 @@
+input{
+    display: inline-block;
+    width: 300px;
+    margin: 30px 10px;
+}
+#tableResult{
+    text-align: center;
+    
+}
+table{
+    margin: auto;
+}
+th{
+    width: 300px;
+}

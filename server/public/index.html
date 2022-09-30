@@ -14,8 +14,8 @@
     <h1>YOUR GAME HERE!</h1>
 
     <form id="inputForm">
-      <input id = "inputPlayer1" placeholder="Guess for Player 1" type="number" min="1" max="25">
-      <input id = "inputPlayer2" placeholder="Guess for Player 2" type="number" min="1" max="25">
+      <input required class="guessRange" id = "inputPlayer1" placeholder="Guess for Player 1" type="number" min="1" max="25">
+      <input required class="guessRange" id = "inputPlayer2" placeholder="Guess for Player 2" type="number" min="1" max="25">
       <button id="submitBtn" type="submit">Play</button>
     </form>
     <table>
@@ -26,11 +26,20 @@
           <th>Result</th>
           <th>Player 2</th>
           <th>Result</th>
+          <th>Robot's Guess</th>
+          <th>Result</th>
       </tr>
       </thead>
       <tbody id="tableResult">
 
       </tbody>
     </table>
+
+    <form id ="numberMinMax">
+      <input type="number" id="inputMin" placeholder="Declare low number" min='0' required>
+      <input type="number" id="inputMax" placeholder="Declare high number" min='0' required>
+      <button type='submit' id="newRandomBtn">Calculate New Random Number</button>
+    </form>
 </body>
 </html>
+
