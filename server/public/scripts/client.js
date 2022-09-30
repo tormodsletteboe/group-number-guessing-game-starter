@@ -139,13 +139,30 @@ function render(){
       <tr>
         <td>${round1.roundCounter}</td>
         <td>${round1.p1}</td>
-        <td>${round1.p1Result} </td>
+        <td>${round1.p1Result}</td>
         <td>${round1.p2} </td>
-        <td>${round1.p2Result} </td>
+        <td>${round1.p2Result}</td>
         <td>${round1.pBot}</td>
-        <td>${round1.pBotResult}
+        <td>${round1.pBotResult}</td>
       </tr>
     `);
   }
+  for(let td of $('#tableResult').children().children()){
+    console.log(td);
+    console.log(td.text);
+    if($(td).text()==='WIN! 🔥'){
+      
+      $(td).addClass("font-effect-fire");
+    }
+  }
+
 
 }
+// function returnFireClass(isItFire){
+//   if(isItFire=='WIN! 🔥'){
+//     return 'class ="font-effect-fire"';
+//   }
+//   return '';
+
+//   //${returnFireClass(round1.p1Result)}
+// }

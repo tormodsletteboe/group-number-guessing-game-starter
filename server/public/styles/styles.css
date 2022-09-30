@@ -9,7 +9,17 @@ input{
 }
 table{
     margin: auto;
+    border: 1px solid black;
 }
 th{
     width: 300px;
+}
+td,th{
+    border: 1px solid black;
+}
+tr:nth-child(even){
+    background-color: gray;
+}
+.font-fire-effect{
+    
 }
